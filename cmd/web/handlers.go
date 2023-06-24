@@ -14,7 +14,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ts, err := template.ParseFiles("./ui/html/home.page.tmpl")
+	ts, err := template.ParseFiles("M:/Projects/Snippet_box/ui/html/home.page.tmpl")
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "internal server error", http.StatusInternalServerError)
