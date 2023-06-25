@@ -10,7 +10,7 @@ func main() {
 	mux.HandleFunc("/", home)
 	mux.HandleFunc("/snippet", showSnippet)
 	mux.HandleFunc("/snippet/create", createSnippet)
-
+mux.
 	fileServer := http.FileServer(http.Dir("M:/Projects/Snippet_box/ui/static/"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 	
