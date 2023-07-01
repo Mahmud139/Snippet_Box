@@ -9,7 +9,7 @@ import (
 
 type application struct {
 	errorLog *log.Logger
-	infoLog *log.Logger
+	infoLog  *log.Logger
 }
 
 func main() {
@@ -21,7 +21,7 @@ func main() {
 
 	app := &application{
 		errorLog: errorLog,
-		infoLog: infoLog,
+		infoLog:  infoLog,
 	}
 
 	mux := http.NewServeMux()
@@ -33,11 +33,11 @@ func main() {
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
 	server := &http.Server{
-		Addr: *addr,
+		Addr:     *addr,
 		ErrorLog: errorLog,
-		Handler: mux,
+		Handler:  mux,
 	}
-	
+
 	infoLog.Printf("Starting server on %v\n", *addr)
 	err := server.ListenAndServe()
 	errorLog.Fatal(err)
