@@ -7,7 +7,7 @@ import (
 
 var ErrNoRecord = errors.New("models: no matching record found")
 
-type snippet struct {
+type Snippet struct {
 	ID int
 	Title string
 	Content string
