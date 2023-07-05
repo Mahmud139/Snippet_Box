@@ -31,5 +31,6 @@ func (m *SnippetModel) Get(id int) (*models.Snippet, error) {
 }
 
 func (m *SnippetModel) Latest() ([]*models.Snippet,  error) {
+	
 	return nil, nil
 }

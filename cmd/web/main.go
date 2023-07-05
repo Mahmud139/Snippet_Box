@@ -15,7 +15,7 @@ import (
 type application struct {
 	errorLog *log.Logger
 	infoLog  *log.Logger
-	snippet *mysql.SnippetModel
+	snippet  *mysql.SnippetModel
 }
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 	app := &application{
 		errorLog: errorLog,
 		infoLog:  infoLog,
-		snippet: &mysql.SnippetModel{DB: db},
+		snippet:  &mysql.SnippetModel{DB: db},
 	}
 
 	server := &http.Server{
