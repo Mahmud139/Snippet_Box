@@ -51,13 +51,26 @@ func (m *SnippetModel) Latest() ([]*models.Snippet,  error) {
 
 	rows, err := m.DB.Query(stmt)
 	if err != nil {
-		if errors.Is(err, sql.ErrNoRows) {
-			return nil, models.ErrNoRecord
-		} else {
+		return nil, err
+	}
+	defer rows.Close()
+
+	snippets := []*models.Snippet{}
+	
+	for rows.Next() {
+		s := &models.Snippet{}
+
+		err := rows.Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires)
+		if err != nil {
 			return nil, err
 		}
+
+		snippets = append(snippets, s)
 	}
 
-	err = rows.Scan()
-	return nil, nil
+	if err = rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return snippets, nil
 }
