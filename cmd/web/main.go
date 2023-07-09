@@ -7,8 +7,6 @@ import (
 	"net/http"
 	"os"
 	"html/template"
-	"fmt"
-	"runtime/debug"
 
 	"github.com/mahmud139/Snippet_Box/pkg/models/mysql"
 
@@ -38,9 +36,7 @@ func main() {
 
 	templateCache, err := newTemplateCache("M:/Projects/Snippet_box/ui/html/")
 	if err != nil {
-		trace := fmt.Sprintf("%s\n%s", err.Error(), debug.Stack())
-		errorLog.Output(2, trace)
-		errorLog.Panic(err)
+		errorLog.Fatal(err)
 	}
 
 	app := &application{
