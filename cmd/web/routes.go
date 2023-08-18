@@ -2,6 +2,8 @@ package main
 
 import (
 	"net/http"
+
+	"github.com/justinas/alice"
 )
 
 func (app *application) routes() http.Handler {
@@ -13,5 +15,5 @@ func (app *application) routes() http.Handler {
 	fileServer := http.FileServer(http.Dir("M:/Projects/Snippet_box/ui/static/"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
-	return app.logRequest(secureHeader(mux))
+	return app.recoverPanic(app.logRequest(secureHeader(mux)))
 }
