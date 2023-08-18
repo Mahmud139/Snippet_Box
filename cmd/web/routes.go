@@ -7,6 +7,7 @@ import (
 )
 
 func (app *application) routes() http.Handler {
+	standardMiddleware := alice.New(app.recoverPanic, app.logRequest, secureHeaders)
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", app.home)
 	mux.HandleFunc("/snippet", app.showSnippet)
@@ -15,5 +16,5 @@ func (app *application) routes() http.Handler {
 	fileServer := http.FileServer(http.Dir("M:/Projects/Snippet_box/ui/static/"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
-	return app.recoverPanic(app.logRequest(secureHeader(mux)))
+	return standardMiddleware.Then(mux)
 }
