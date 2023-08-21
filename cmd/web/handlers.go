@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"strings"
-	"unicode/utf8"
 
 	"github.com/mahmud139/Snippet_Box/pkg/forms"
 	"github.com/mahmud139/Snippet_Box/pkg/models"
