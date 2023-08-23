@@ -11,10 +11,10 @@ import (
 
 type templateData struct {
 	CurrentYear int
-	Flash string
-	Form *forms.Form
-	Snippet *models.Snippet
-	Snippets []*models.Snippet
+	Flash       string
+	Form        *forms.Form
+	Snippet     *models.Snippet
+	Snippets    []*models.Snippet
 }
 
 func humanDate(t time.Time) string {
@@ -22,7 +22,7 @@ func humanDate(t time.Time) string {
 }
 
 var functions = template.FuncMap{
-	"humanDate" : humanDate,
+	"humanDate": humanDate,
 }
 
 func newTemplateCache(dir string) (map[string]*template.Template, error) {
@@ -41,7 +41,7 @@ func newTemplateCache(dir string) (map[string]*template.Template, error) {
 			return nil, err
 		}
 
-		ts, err= ts.ParseFiles(page)
+		ts, err = ts.ParseFiles(page)
 		if err != nil {
 			return nil, err
 		}

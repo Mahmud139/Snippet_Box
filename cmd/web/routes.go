@@ -12,7 +12,7 @@ func (app *application) routes() http.Handler {
 	dynamicMiddleware := alice.New(app.session.Enable)
 
 	mux := pat.New()
-	
+
 	mux.Get("/", dynamicMiddleware.ThenFunc(app.home))
 	mux.Get("/snippet/create", dynamicMiddleware.ThenFunc(app.createSnippetForm))
 	mux.Post("/snippet/create", dynamicMiddleware.ThenFunc(app.createSnippet))

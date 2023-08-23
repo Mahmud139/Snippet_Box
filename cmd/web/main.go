@@ -16,10 +16,10 @@ import (
 )
 
 type application struct {
-	errorLog *log.Logger
-	infoLog  *log.Logger
-	session *sessions.Session
-	snippet  *mysql.SnippetModel
+	errorLog      *log.Logger
+	infoLog       *log.Logger
+	session       *sessions.Session
+	snippet       *mysql.SnippetModel
 	templateCache map[string]*template.Template
 }
 
@@ -47,10 +47,10 @@ func main() {
 	session.Lifetime = 4 * time.Hour
 
 	app := &application{
-		errorLog: errorLog,
-		infoLog:  infoLog,
-		session: session,
-		snippet:  &mysql.SnippetModel{DB: db},
+		errorLog:      errorLog,
+		infoLog:       infoLog,
+		session:       session,
+		snippet:       &mysql.SnippetModel{DB: db},
 		templateCache: templateCache,
 	}
 

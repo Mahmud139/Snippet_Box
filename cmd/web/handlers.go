@@ -61,7 +61,6 @@ func (app *application) createSnippet(w http.ResponseWriter, r *http.Request) {
 	form.Required("title", "content", "expires")
 	form.MaxLength("title", 100)
 	form.PermittedValue("expires", "365", "7", "1")
-	
 
 	if !form.Valid() {
 		app.render(w, r, "create.page.tmpl", &templateData{
