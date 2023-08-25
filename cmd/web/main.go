@@ -60,8 +60,8 @@ func main() {
 		Handler:  app.routes(),
 	}
 
-	infoLog.Printf("Starting server on %v\n", *addr)
-	err = server.ListenAndServe()
+	infoLog.Printf("Starting server on https://%v\n", *addr)
+	err = server.ListenAndServeTLS("M:/Projects/Snippet_box/tls/cert.pem", "M:/Projects/Snippet_box/tls/key.pem")
 	errorLog.Fatal(err)
 }
 
