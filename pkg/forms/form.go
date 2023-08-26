@@ -1,7 +1,6 @@
 package forms
 
 import (
-	"crypto/internal/edwards25519/field"
 	"fmt"
 	"net/url"
 	"regexp"
