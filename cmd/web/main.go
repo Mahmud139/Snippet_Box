@@ -22,6 +22,7 @@ type application struct {
 	session       *sessions.Session
 	snippet       *mysql.SnippetModel
 	templateCache map[string]*template.Template
+	user *mysql.UserModel
 }
 
 func main() {
@@ -53,6 +54,7 @@ func main() {
 		session:       session,
 		snippet:       &mysql.SnippetModel{DB: db},
 		templateCache: templateCache,
+		user: &mysql.UserModel{DB: db},
 	}
 
 	tlsConfig := &tls.Config{
