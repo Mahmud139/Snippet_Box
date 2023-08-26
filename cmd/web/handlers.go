@@ -125,7 +125,9 @@ func (app *application) signupUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) loginUserForm(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("show login form to the user..."))
+	app.render(w, r, "login.page.tmpl", &templateData{
+		Form: forms.New(nil),
+	})
 }
 
 func (app *application) loginUser(w http.ResponseWriter, r *http.Request) {
