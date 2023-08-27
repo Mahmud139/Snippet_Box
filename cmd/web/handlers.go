@@ -149,11 +149,15 @@ func (app *application) loginUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	app.session.Put(r, "authenticatedUserId", id)
+	app.session.Put(r, "authenticatedUserID", id)
 
 	http.Redirect(w, r, "/snippet/create", http.StatusSeeOther)
 }
 
 func (app *application) logoutUser(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("logout a user..."))
+	app.session.Remove(r, "authenticatedUserID")
+
+	app.session.Put(r, "flash", "You've been logged out successfully!")
+
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
